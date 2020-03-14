@@ -1,0 +1,31 @@
+{% extends 'time_tracker_site/base_time_tracker_site.html' %}
+{% block title %}
+    Учет времени
+{% endblock %}
+
+{% block content %}
+    <h2>Таблица учета времени</h2>
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Task</th>
+      <th scope="col">Hours</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for t in time_trackers %}
+    <tr>
+      <td>{{ t.author }}</td>
+      <td>{{ t.title }}</td>
+      <td>{{ t.hours }}</td>
+      <td>{{ t.description }}</td>
+    </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}
