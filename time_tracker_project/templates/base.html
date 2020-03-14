@@ -23,18 +23,23 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'time_tracker_url' %}">Учет времени</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Вход пользователя</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'add_task_url' %}">Add task</a>
-            </li>
+            {% if request.user.is_authenticated and request.user.is_staff %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'time_tracker_url' %}">Учет времени</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'add_task_url' %}">Add task</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/admin">Панель администратора</a>
+                </li>
+            {% endif %}
+            {% if request.user.is_authenticated and request.user.is_staff %}
             <li class="nav-item">
-                <a class="nav-link active" href="/admin">Вход администратора</a>
+                <a class="nav-link active" href="{% url 'logout' %}">Выход</a>
             </li>
+            {% endif %}
+
         </ul>
 
     </div>
