@@ -4,12 +4,11 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Таблица учета времени</h2>
+    <h2>Таблица учета времени пользователя {{ request.user }}</h2>
 
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">User</th>
       <th scope="col">Task</th>
       <th scope="col">Hours</th>
       <th scope="col">Description</th>
@@ -17,15 +16,15 @@
   </thead>
   <tbody>
       {% for t in time_trackers %}
-    <tr>
-      <td>{{ t.author }}</td>
-      <td>{{ t.title }}</td>
-      <td>{{ t.hours }}</td>
-      <td>{{ t.description }}</td>
-    </tr>
+          {% if request.user == t.author %}
+                <tr>
+                  <td>{{ t.title }}</td>
+                  <td>{{ t.hours }}</td>
+                  <td>{{ t.description }}</td>
+                </tr>
+          {% endif %}
       {% endfor %}
   </tbody>
 </table>
-
 
 {% endblock %}
