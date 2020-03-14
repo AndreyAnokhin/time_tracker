@@ -25,8 +25,10 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = TimeTracking
-    template_name = 'time_tracker_site/confirm_delete_task.html'
     success_url = reverse_lazy('time_tracker_url')
+
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
 
 
 def index(request):
