@@ -10,7 +10,13 @@
     <p class="card-text">{{ task.description }}</p>
     <p class="card-text">Hours: {{ task.hours }}</p>
     <p class="card-text">Created data: {{ task.date_created }}</p>
-    <a href="#" class="btn btn-primary">Delete</a>
+
+    {% if task.editable %}
+        <a href="{% url 'task_delete_url' pk=task.id %}" class="btn btn-primary">Delete</a>
+    {% else %}
+        <button type="button" class="btn btn-secondary" disabled>Delete</button>
+    {% endif %}
+
   </div>
 </div>
 

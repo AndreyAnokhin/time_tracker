@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import View, CreateView
+from django.views.generic import View, CreateView, DeleteView
 
 from .models import TimeTracking
 
@@ -21,6 +21,12 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super(TaskCreateView, self).form_valid(form)
+
+
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
+    model = TimeTracking
+    template_name = 'time_tracker_site/confirm_delete_task.html'
+    success_url = reverse_lazy('time_tracker_url')
 
 
 def index(request):
