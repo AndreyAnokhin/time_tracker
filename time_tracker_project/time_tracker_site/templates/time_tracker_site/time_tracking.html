@@ -18,9 +18,9 @@
       {% for t in time_trackers %}
           {% if request.user == t.author %}
                 <tr>
-                  <td>{{ t.title }}</td>
+                  <td><a href="{% url 'task_detail_url' task_id=t.id %}">{{ t.title }}</a></td>
                   <td>{{ t.hours }}</td>
-                  <td>{{ t.description }}</td>
+                  <td>{{ t.description|truncatechars:50 }}</td>
                 </tr>
           {% endif %}
       {% endfor %}

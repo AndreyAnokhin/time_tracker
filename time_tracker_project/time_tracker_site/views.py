@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import View, CreateView
 
@@ -25,3 +25,8 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 
 def index(request):
     return render(request, 'time_tracker_site/index.html')
+
+
+def task_detail(request, task_id):
+    task = get_object_or_404(TimeTracking, id=task_id)
+    return render(request, 'time_tracker_site/task_detail.html', context={'task': task})
