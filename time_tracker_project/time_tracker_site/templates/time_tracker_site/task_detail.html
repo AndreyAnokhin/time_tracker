@@ -4,19 +4,31 @@
 {% endblock %}
 {% block content %}
 
+
+  <div class="row">
+    <div class="col-md-10 mx-auto">
 <div class="card" style="width: 50rem;">
   <div class="card-body">
-    <h5 class="card-title">Task title: {{ task.title }}</h5>
-    <p class="card-text">{{ task.description }}</p>
-    <p class="card-text">Hours: {{ task.hours }}</p>
-    <p class="card-text">Created data: {{ task.date_created }}</p>
+    <h5 class="card-title text-left">Task title: {{ task.title }}</h5>
+    <p class="card-text text-justify"><b>Description: </b>{{ task.description }}</p>
+    <p class="card-text text-left"><b>Hours: </b>{{ task.hours }}</p>
+      <p class="card-text text-left"><b>Created data: </b>{{ task.date_created|date:"d F Y, H:i" }}</p>
+{% if task.editable %}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeleteModal">Delete</button>
+{% else %}
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#notDeleteWarning">Delete</button>
+{% endif %}
+  </div>
+</div>
 
-    {% if task.editable %}
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeleteModal">Delete</button>
-    {% else %}
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#notDeleteWarning">Delete</button>
-    {% endif %}
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalTitle" aria-hidden="true">
@@ -59,7 +71,5 @@
 </div>
 
 
-  </div>
-</div>
 
 {% endblock %}

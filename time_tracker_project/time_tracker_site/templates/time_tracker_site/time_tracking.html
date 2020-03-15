@@ -1,11 +1,11 @@
 {% extends 'time_tracker_site/base_time_tracker_site.html' %}
 {% block title %}
-    Учет времени
+    Time tracking report
 {% endblock %}
 
 {% block content %}
-    <h2>Таблица учета времени пользователя {{ request.user }}</h2>
-
+    <h2>Time tracking report for "{{ request.user }}" user</h2>
+    <br>
     <table class="table">
   <thead>
     <tr>
@@ -18,9 +18,9 @@
       {% for t in time_trackers %}
           {% if request.user == t.author %}
                 <tr>
-                  <td><a href="{% url 'task_detail_url' task_id=t.id %}">{{ t.title }}</a></td>
+                  <td><a href="{% url 'task_detail_url' task_id=t.id %}">{{ t.title|truncatechars:30 }}</a></td>
                   <td>{{ t.hours }}</td>
-                  <td>{{ t.description|truncatechars:50 }}</td>
+                  <td>{{ t.description|truncatechars:80 }}</td>
                 </tr>
           {% endif %}
       {% endfor %}

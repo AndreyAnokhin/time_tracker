@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block title %}Login{% endblock %}
 {% block content %}
 {% if form.errors %}
@@ -17,21 +16,20 @@
 
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
-
-<input type="submit" value="login">
-<input type="hidden" name="next" value="{{ next }}">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+        <h2>Please sign in</h2><br>
+        <input type="hidden" name="next" value="{{ next }}">
+        {{ form }}
+        <button class="btn btn-primary" type="submit">Sign in</button>
+    </div>
+  </div>
+</div>
 </form>
 
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-
 {% endblock %}
+
+
+
+
