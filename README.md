@@ -11,3 +11,7 @@ cd time_tracker_project
 python manage.py migrate
 python manage.py createsuperuser
 ```
+Run the server:
+```sh
+python manage.py runserver 
+```
