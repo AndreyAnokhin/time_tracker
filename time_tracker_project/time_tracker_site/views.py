@@ -31,10 +31,6 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
         return self.delete(request, *args, **kwargs)
 
 
-def index(request):
-    return render(request, 'time_tracker_site/index.html')
-
-
 def task_detail(request, task_id):
     task = get_object_or_404(TimeTracking, id=task_id)
     return render(request, 'time_tracker_site/task_detail.html', context={'task': task})
