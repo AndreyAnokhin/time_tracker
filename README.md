@@ -5,7 +5,7 @@ You can find full test task description (in Russian) [here](test_task.pdf).
 
 ## How to install
 
-#### Requirements
+#### Requirements (see Pipfile for details):
 - python 3.6
 - django 2.2
 
