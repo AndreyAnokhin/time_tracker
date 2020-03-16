@@ -12,6 +12,7 @@ You can find full test task description (in Russian) [here](test_task.pdf).
 Create virtual environment and install dependencies with [pipenv](https://github.com/pypa/pipenv):
 ```sh
 pipenv install
+pipenv shell
 ```
 Apply migrations and create a user:
 ```sh
