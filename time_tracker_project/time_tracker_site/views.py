@@ -8,8 +8,8 @@ from .models import TimeTracking
 
 class TimeTrackerView(LoginRequiredMixin, View):
     def get(self, request):
-        time_trackers = TimeTracking.objects.all()
-        return render(request, 'time_tracker_site/time_tracking.html', context={'time_trackers': time_trackers})
+        projects = TimeTracking.objects.all()
+        return render(request, 'time_tracker_site/time_tracking.html', context={'projects': projects})
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):

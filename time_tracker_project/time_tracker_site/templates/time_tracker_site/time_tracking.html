@@ -15,12 +15,12 @@
     </tr>
   </thead>
   <tbody>
-      {% for t in time_trackers %}
-          {% if request.user == t.author %}
+      {% for project in projects %}
+          {% if request.user == project.author %}
                 <tr>
-                  <td><a href="{{ t.get_absolute_url }}">{{ t.title|truncatechars:30 }}</a></td>
-                  <td>{{ t.hours }}</td>
-                  <td>{{ t.description|truncatechars:80 }}</td>
+                  <td><a href="{{ project.get_absolute_url }}">{{ project.title|truncatechars:30 }}</a></td>
+                  <td>{{ project.hours }}</td>
+                  <td>{{ project.description|truncatechars:80 }}</td>
                 </tr>
           {% endif %}
       {% endfor %}
@@ -28,12 +28,8 @@
 </table>
 
     <div>
-        {% if not time_trackers %}
-            <br>
-            <h5>You have no projects yet. Do you want to add a new one?</h5>
-            <br>
-            <a class="btn btn-primary" href="{% url 'add_task_url' %}" role="button">Add new project</a>
-        {% endif %}
+        <br>
+        <h5>You can create new project: <a class="btn btn-outline-primary btn-sm" href="{% url 'add_task_url' %}" role="button">Add new project</a></h5>
     </div>
 
 {% endblock %}
