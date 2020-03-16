@@ -7,7 +7,12 @@
         <h2>Time tracking web service</h2>
     <p class="lead">It's a simple time tracker for tracking your work hours across projects<br></p>
 
-    {% if not request.user.is_authenticated %}
+    {% if request.user.is_authenticated %}
+        <br>
+        <h5>You can create new project: <a class="btn btn-outline-secondary btn-sm" href="{% url 'add_task_url' %}" role="button">Add new project</a></h5>
+        <br>
+        <h5>Look at your timesheet: <a class="btn btn-outline-secondary btn-sm" href="{% url 'time_tracker_url' %}" role="button">Timesheet</a></h5>
+    {% else %}
         <a class="btn btn-primary" href="{% url 'login' %}" role="button">Sign in</a>
     {% endif %}
 

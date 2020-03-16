@@ -9,7 +9,7 @@
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">Task</th>
+      <th scope="col">Project</th>
       <th scope="col">Hours</th>
       <th scope="col">Description</th>
     </tr>
@@ -26,5 +26,14 @@
       {% endfor %}
   </tbody>
 </table>
+
+    <div>
+        {% if not time_trackers %}
+            <br>
+            <h5>You have no projects yet. Do you want to add a new one?</h5>
+            <br>
+            <a class="btn btn-primary" href="{% url 'add_task_url' %}" role="button">Add new project</a>
+        {% endif %}
+    </div>
 
 {% endblock %}
